@@ -4,6 +4,7 @@ if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
+  exit
 fi
 
 echo Disable MySQL 8 Version repo
@@ -12,6 +13,7 @@ if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
+  exit
 fi
 
 echo Install MySQL
@@ -20,6 +22,7 @@ if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
+  exit
 fi
 
 echo Enable MySQL Service
@@ -28,6 +31,7 @@ if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
+  exit
 fi
 
 echo Start MySQL Service
@@ -36,6 +40,7 @@ if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
+  exit
 fi
 
 
