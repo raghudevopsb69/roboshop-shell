@@ -44,10 +44,10 @@ else
 fi
 
 
-echo show databases | mysql -uroot -pRoboShop@1
+echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD}
 if [ $? -ne 0 ]
 then
-  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" > /tmp/root-pass-sql
+  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROBOSHOP_MYSQL_PASSWORD}';" > /tmp/root-pass-sql
   DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
   cat /tmp/root-pass-sql  | mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}"
 
