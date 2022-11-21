@@ -52,3 +52,4 @@ then
   cat /tmp/root-pass-sql  | mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}"
 
 fi
+
