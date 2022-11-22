@@ -3,7 +3,7 @@ if [ -z "$1" ]; then
   exit
 fi
 
-COMPONENT=cart
+COMPONENT=mysql
 source common.sh
 ROBOSHOP_MYSQL_PASSWORD=$1
 
