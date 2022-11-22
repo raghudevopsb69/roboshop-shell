@@ -46,7 +46,7 @@ systemctl restart cart &>>$LOG
 STAT $?
 
 PRINT "Enable Cart Service"
-systemctl enable cart &>>$LOG 
+systemctl enable cart &>>$LOG
 STAT $?
 
 
