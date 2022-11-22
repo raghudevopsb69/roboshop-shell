@@ -9,7 +9,7 @@ STAT $?
 APP_LOC=/usr/share/nginx/html
 
 DOWNLOAD_APP_CODE
-exit 
+exit
 
 mv frontend-main/static/* .
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
