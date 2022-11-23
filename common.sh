@@ -96,6 +96,7 @@ JAVA() {
 
   DOWNLOAD_APP_CODE
 
+  cd /home/roboshop/$COMPONENT
   PRINT "Download Maven Dependencies"
   mvn clean package &>>$LOG  && mv target/$COMPONENT-1.0.jar $COMPONENT.jar &>>$LOG
   STAT $?
