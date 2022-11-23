@@ -106,3 +106,23 @@ JAVA() {
   SYSTEMD_SETUP
 
 }
+
+PYTHON() {
+  APP_LOC=/home/roboshop
+  CONTENT=$COMPONENT
+  APP_USER=roboshop
+
+  PRINT "Install Python"
+  yum install python36 gcc python3-devel -y &>>$LOG
+  STAT $?
+
+  DOWNLOAD_APP_CODE
+  mv ${COMPONENT}-main ${COMPONENT}
+  cd ${COMPONENT}
+
+  PRINT "Install Python Dependencies"
+  pip3 install -r requirements.txt  &>>$LOG
+  STAT $?
+
+
+}
