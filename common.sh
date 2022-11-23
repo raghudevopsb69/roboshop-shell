@@ -94,6 +94,8 @@ JAVA() {
   yum install maven -y  &>>$LOG
   STAT $?
 
+  DOWNLOAD_APP_CODE
+
   mv ${COMPONENT}-main ${COMPONENT}
   cd ${COMPONENT}
 
