@@ -3,7 +3,7 @@
   "Changes": [{
     "Action": "UPSERT",
     "ResourceRecordSet": {
-      "Name": "COMPONENT",
+      "Name": "COMPONENT.devopsb69.online",
       "Type": "A",
       "TTL": 30,
       "ResourceRecords": [{ "Value": "IPADDRESS"}]
