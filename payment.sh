@@ -1,4 +1,4 @@
-COMPONENT=shipping
+COMPONENT=payment
 source common.sh
 
 PYTHON
