@@ -47,16 +47,8 @@ SYSTEMD_SETUP() {
   mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
   STAT $?
 
-  PRINT "Reload SystemD"
-  systemctl daemon-reload &>>$LOG
-  STAT $?
-
   PRINT "Restart ${COMPONENT}"
-  systemctl restart ${COMPONENT} &>>$LOG
-  STAT $?
-
-  PRINT "Enable ${COMPONENT} Service"
-  systemctl enable ${COMPONENT} &>>$LOG
+  systemctl daemon-reload &>>$LOG && systemctl restart ${COMPONENT} &>>$LOG && systemctl enable ${COMPONENT} &>>$LOG
   STAT $?
 }
 
