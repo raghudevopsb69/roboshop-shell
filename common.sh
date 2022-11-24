@@ -15,6 +15,7 @@ PRINT() {
 
 LOG=/tmp/$COMPONENT.log
 rm -f $LOG
+set-hostname $COMPONENT
 
 DOWNLOAD_APP_CODE() {
   if [ ! -z  "$APP_USER" ]; then
