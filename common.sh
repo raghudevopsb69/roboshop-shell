@@ -4,7 +4,7 @@ STAT() {
   else
     echo -e "\e[31mFAILURE\e[0m"
     echo Check the error in $LOG file
-    exit
+    exit 1
   fi
 }
 
