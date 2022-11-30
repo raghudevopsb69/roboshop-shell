@@ -40,6 +40,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+component=$1
 COMPONENT="${env}-${component}"
 create_ec2
 
