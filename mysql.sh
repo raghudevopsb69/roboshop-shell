@@ -28,20 +28,24 @@ systemctl restart mysqld &>>$LOG
 STAT $?
 
 
-echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} &>>$LOG
-if [ $? -ne 0 ]
-then
-  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROBOSHOP_MYSQL_PASSWORD}';" > /tmp/root-pass-sql
-  DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
-  cat /tmp/root-pass-sql  | mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" &>>$LOG
-fi
-
-PRINT "Uninstall Validate Plugin Password"
-echo "show plugins" |  mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} | grep validate_password &>>$LOG
-if [ $? -eq 0 ]; then
-  echo " uninstall plugin validate_password;" | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD}   &>>$LOG
-fi
+PRINT "Reset Default Password"
+mysql_secure_installation --set-root-pass ${ROBOSHOP_MYSQL_PASSWORD}
 STAT $?
+
+#echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} &>>$LOG
+#if [ $? -ne 0 ]
+#then
+#  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROBOSHOP_MYSQL_PASSWORD}';" > /tmp/root-pass-sql
+#  DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
+#  cat /tmp/root-pass-sql  | mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" &>>$LOG
+#fi
+#
+#PRINT "Uninstall Validate Plugin Password"
+#echo "show plugins" |  mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} | grep validate_password &>>$LOG
+#if [ $? -eq 0 ]; then
+#  echo " uninstall plugin validate_password;" | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD}   &>>$LOG
+#fi
+#STAT $?
 
 APP_LOC=/tmp
 CONTENT=mysql-main
